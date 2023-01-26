@@ -36,17 +36,14 @@ export default {
   },
   methods: {
     save() {
-      axios.post("https://text-editor-api.herokuapp.com/create", {
+      axios.post("/create", {
         content: this.content,
       });
     },
     async show() {
-      const response = await axios.post(
-        "https://text-editor-api.herokuapp.com/read",
-        {
-          id: this.id,
-        }
-      );
+      const response = await axios.post("/read", {
+        id: this.id,
+      });
       if (response.data.data.length === 0) {
         this.showContent = "";
         return;
